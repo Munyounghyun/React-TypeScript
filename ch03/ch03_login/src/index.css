@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('http://fonts.googleapis.com/icon/?family=Material+Icons');
+
+.material-icons {
+  font-family: 'Material Icons';
+  display: inline-block;
+}

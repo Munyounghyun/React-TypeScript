@@ -1,0 +1,44 @@
+import type {FC} from 'react'
+import type {DivProps} from '../../components'
+import {Avatar, Div, Icon} from '../../components'
+import * as D from '../../data'
+
+export type UserCardProps = DivProps & {
+  card: D.ICard
+  onRemove?: () => void
+}
+const Card: FC<UserCardProps> = ({card, onRemove}) => {
+  const {writer, image} = card
+  const {avatar, name, jobTitle} = writer
+  const icons = ['home', 'search', 'settings', 'favorite'].map((name) => (
+    <Icon key={name} name={name} className="mr-2 text-3xl" />
+  ))
+
+  return (
+    <Div className="m-2 border shadow-lg rounded-xl" width="10rem">
+      <Div className="relative h-20" src={image}>
+        <Icon
+          name="remove"
+          className="absolute right-1 top-1 btn-primary btn-xs"
+          onClick={onRemove}
+        />
+      </Div>
+      <Div
+        className="flex flex-col p-2"
+        minHeight="16rem"
+        height="16rem"
+        maxHeight="16rem">
+        <Div minHeight="4rem" height="4rem" maxHeight="4rem">
+          <Div className="flex flex-row items-center">
+            <Avatar src={avatar} size="2fm" />
+            <Div className="ml-2">
+              <p className="text-xs font-bold">{name}</p>
+              <p className="text-xs text-gray-500">{jobTitle}</p>
+            </Div>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
+  )
+}
+export default Card
